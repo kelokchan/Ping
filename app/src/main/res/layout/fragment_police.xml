@@ -15,7 +15,7 @@
         android:layout_width="250dip"
         android:layout_height="250dip"
         android:src="@drawable/police2"
-        app:cb_color="#EDEDED"
+        app:cb_color="@color/blue"
         app:cb_pressedRingWidth="30dip"
         android:layout_gravity="center" />
 
