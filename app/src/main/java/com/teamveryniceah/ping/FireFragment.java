@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 public class FireFragment extends Fragment {
 
 
+
     public FireFragment() {
         // Required empty public constructor
     }
@@ -22,9 +23,10 @@ public class FireFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fire, container, false);
-    }
 
+        final View rootView = inflater.inflate(R.layout.fragment_fire, container, false);
+        // Inflate the layout for this fragment
+        return rootView;
+    }
 
 }

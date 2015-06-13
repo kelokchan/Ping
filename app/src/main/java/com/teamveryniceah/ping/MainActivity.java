@@ -1,36 +1,47 @@
 package com.teamveryniceah.ping;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.skyfishjy.library.RippleBackground;
+
+import at.markushi.ui.CircleButton;
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
 
-public class MainActivity extends ActionBarActivity implements MaterialTabListener {
+public class MainActivity extends ActionBarActivity implements MaterialTabListener, View.OnClickListener {
 
     private Toolbar mToolbar;
     private ViewPager mPager;
     private MaterialTabHost mTabHost;
+    private CircleButton mPoliceButton;
+    private CircleButton mAmbButton;
+    private CircleButton mFireButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mPoliceButton = (CircleButton) findViewById(R.id.policeButton);
+        mAmbButton = (CircleButton) findViewById(R.id.ambButton);
+        mFireButton = (CircleButton) findViewById(R.id.fireButton);
+
         mToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         mPager = (ViewPager) findViewById(R.id.pager);
         mTabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
@@ -48,9 +59,39 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
                             .setText(pageAdapter.getPageTitle(i))
                             .setTabListener(this)
             );
+        }
 
+
+
+    }
+
+    public void fireButtonClick(View view) {
+        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.fireContent);
+        if (rippleBackground.isRippleAnimationRunning()) {
+            rippleBackground.stopRippleAnimation();
+        } else {
+            rippleBackground.startRippleAnimation();
         }
     }
+
+    public void policeButtonClick(View view) {
+        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.policeContent);
+        if (rippleBackground.isRippleAnimationRunning()) {
+            rippleBackground.stopRippleAnimation();
+        } else {
+            rippleBackground.startRippleAnimation();
+        }
+    }
+
+    public void ambButtonClick(View view) {
+        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.ambContent);
+        if (rippleBackground.isRippleAnimationRunning()) {
+            rippleBackground.stopRippleAnimation();
+        } else {
+            rippleBackground.startRippleAnimation();
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,17 +117,17 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     @Override
     public void onTabSelected(MaterialTab materialTab) {
-        switch (materialTab.getPosition()) {
-            case 0:
-                materialTab.setAccentColor(getResources().getColor(R.color.blue));
-                break;
-            case 1:
-                materialTab.setAccentColor(getResources().getColor(R.color.green));
-                break;
-            case 2:
-                materialTab.setAccentColor(getResources().getColor(R.color.orange));
-                break;
-        }
+//        switch (materialTab.getPosition()) {
+//            case 0:
+//                materialTab.setAccentColor(getResources().getColor(R.color.blue));
+//                break;
+//            case 1:
+//                materialTab.setAccentColor(getResources().getColor(R.color.green));
+//                break;
+//            case 2:
+//                materialTab.setAccentColor(getResources().getColor(R.color.orange));
+//                break;
+//        }
         mPager.setCurrentItem(materialTab.getPosition());
     }
 
@@ -97,22 +138,25 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     @Override
     public void onTabUnselected(MaterialTab materialTab) {
-        switch (materialTab.getPosition()) {
-            case 0:
-                materialTab.setAccentColor(getResources().getColor(R.color.blue));
-                break;
-            case 1:
-                materialTab.setAccentColor(getResources().getColor(R.color.green));
-                break;
-            case 2:
-                materialTab.setAccentColor(getResources().getColor(R.color.orange));
-                break;
-        }
+//        switch (materialTab.getPosition()) {
+//            case 0:
+//                materialTab.setAccentColor(getResources().getColor(R.color.blue));
+//                break;
+//            case 1:
+//                materialTab.setAccentColor(getResources().getColor(R.color.green));
+//                break;
+//            case 2:
+//                materialTab.setAccentColor(getResources().getColor(R.color.orange));
+//                break;
+//        }
     }
 
-    private class PageAdapter extends FragmentPagerAdapter {
+    @Override
+    public void onClick(View v) {
 
-        int[] icons = {R.drawable.ic_police, R.drawable.ic_ambulance, R.drawable.ic_fire};
+    }
+
+    private class PageAdapter extends FragmentStatePagerAdapter {
 
         public PageAdapter(FragmentManager fm) {
             super(fm);
@@ -123,9 +167,6 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
             return getResources().getStringArray(R.array.tabs)[position];
         }
 
-        private Drawable getIcon(int position) {
-            return getResources().getDrawable(icons[position]);
-        }
 
         @Override
         public Fragment getItem(int i) {
@@ -146,3 +187,5 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         }
     }
 }
+
+

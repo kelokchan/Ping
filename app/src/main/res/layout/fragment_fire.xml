@@ -1,18 +1,32 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.teamveryniceah.ping.PoliceFragment">
 
+    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fireContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:rb_color="@color/orange"
+        app:rb_duration="2500"
+        app:rb_radius="32dp"
+        app:rb_rippleAmount="4"
+        app:rb_scale="10">
+
+    </com.skyfishjy.library.RippleBackground>
 
     <at.markushi.ui.CircleButton
+        android:id="@+id/fireButton"
         android:layout_width="match_parent"
-        android:layout_height="200dip"
+        android:layout_height="250dip"
+        android:layout_gravity="center"
+        android:onClick="fireButtonClick"
         android:src="@drawable/fire2"
         app:cb_color="@color/orange"
-        app:cb_pressedRingWidth="20dip"
-        android:layout_gravity="center"
-        android:layout_marginTop="90dp"/>
+        app:cb_pressedRingWidth="20dip" />
 
-</RelativeLayout>
+</FrameLayout>
