@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.skyfishjy.library.RippleBackground;
+import com.teamveryniceah.ping.tabs.SlidingTabLayout;
 
 import at.markushi.ui.CircleButton;
 import it.neokree.materialtabs.MaterialTab;
@@ -24,6 +25,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     private Toolbar mToolbar;
     private ViewPager mPager;
+    private SlidingTabLayout mTabs;
     private MaterialTabHost mTabHost;
     private CircleButton mPoliceButton;
     private CircleButton mAmbButton;
@@ -43,26 +45,46 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         mToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         mPager = (ViewPager) findViewById(R.id.pager);
-        mTabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
-        mPager.setAdapter(pageAdapter);
-        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
+        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        mTabs.setDistributeEvenly(true);
+        mTabs.setViewPager(mPager);
+
+        mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
-            public void onPageSelected(int position) {
-                mTabHost.setSelectedNavigationItem(position);
+            public int getIndicatorColor(int position) {
+                return getResources().getColor(R.color.indicatorColor);
             }
         });
 
-        for (int i = 0; i < pageAdapter.getCount(); i++) {
-            mTabHost.addTab(
-                    mTabHost.newTab()
-                            .setText(pageAdapter.getPageTitle(i))
-                            .setTabListener(this)
-            );
-        }
+        mTabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
 
+            @Override
+            public void onPageSelected(int position) {
+                switch(position){
+                    case 0: mToolbar.setBackgroundColor(getResources().getColor(R.color.blue));
+                        mTabs.setBackgroundColor(getResources().getColor(R.color.blue));
+                        break;
+                    case 1: mToolbar.setBackgroundColor(getResources().getColor(R.color.green));
+                        mTabs.setBackgroundColor(getResources().getColor(R.color.green));
+                        break;
+                    case 2: mToolbar.setBackgroundColor(getResources().getColor(R.color.orange));
+                        mTabs.setBackgroundColor(getResources().getColor(R.color.orange));
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 

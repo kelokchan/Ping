@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange"
     tools:context="com.teamveryniceah.ping.PoliceFragment">
 
     <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        app:rb_color="@color/orange"
-        app:rb_duration="2500"
+        app:rb_color="@color/indicatorColor"
+        app:rb_duration="2700"
         app:rb_radius="32dp"
         app:rb_rippleAmount="4"
         app:rb_scale="10">

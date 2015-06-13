@@ -6,7 +6,7 @@
     </style>
 
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">#647382</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
 
