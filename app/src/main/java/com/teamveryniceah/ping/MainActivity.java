@@ -1,6 +1,9 @@
 package com.teamveryniceah.ping;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +25,8 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(mToolbar);
 
         mPager = (ViewPager) findViewById(R.id.pager);
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
+        mPager.setAdapter(pageAdapter);
     }
 
     @Override
@@ -44,5 +49,36 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class PageAdapter extends FragmentPagerAdapter {
+
+
+        public PageAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return getResources().getStringArray(R.array.tabs)[position];
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            switch (i) {
+                case 0:
+                    return new PoliceFragment();
+                case 1:
+                    return new AmbFragment();
+                case 2:
+                    return new FireFragment();
+            }
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
     }
 }
