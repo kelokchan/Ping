@@ -4,7 +4,7 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/action_nearby"
-        android:icon="@drawable/ic_action_nearby"
-        android:title="@string/action_share"
+        android:icon="@drawable/ic_action_nearby2"
+        android:title="@string/action_nearby"
         app:showAsAction="ifRoom" />
 </menu>

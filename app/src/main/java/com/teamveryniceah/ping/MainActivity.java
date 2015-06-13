@@ -1,5 +1,6 @@
 package com.teamveryniceah.ping;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +16,7 @@ import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
 
-public class MainActivity extends ActionBarActivity implements MaterialTabListener{
+public class MainActivity extends ActionBarActivity implements MaterialTabListener {
 
     private Toolbar mToolbar;
     private ViewPager mPager;
@@ -34,19 +35,20 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         mTabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
         mPager.setAdapter(pageAdapter);
-        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 mTabHost.setSelectedNavigationItem(position);
             }
         });
 
-        for (int i =0; i < pageAdapter.getCount(); i++) {
+        for (int i = 0; i < pageAdapter.getCount(); i++) {
             mTabHost.addTab(
                     mTabHost.newTab()
                             .setText(pageAdapter.getPageTitle(i))
                             .setTabListener(this)
             );
+
         }
     }
 
@@ -74,6 +76,17 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     @Override
     public void onTabSelected(MaterialTab materialTab) {
+        switch (materialTab.getPosition()) {
+            case 0:
+                materialTab.setAccentColor(getResources().getColor(R.color.blue));
+                break;
+            case 1:
+                materialTab.setAccentColor(getResources().getColor(R.color.green));
+                break;
+            case 2:
+                materialTab.setAccentColor(getResources().getColor(R.color.orange));
+                break;
+        }
         mPager.setCurrentItem(materialTab.getPosition());
     }
 
@@ -84,11 +97,22 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     @Override
     public void onTabUnselected(MaterialTab materialTab) {
-
+        switch (materialTab.getPosition()) {
+            case 0:
+                materialTab.setAccentColor(getResources().getColor(R.color.blue));
+                break;
+            case 1:
+                materialTab.setAccentColor(getResources().getColor(R.color.green));
+                break;
+            case 2:
+                materialTab.setAccentColor(getResources().getColor(R.color.orange));
+                break;
+        }
     }
 
     private class PageAdapter extends FragmentPagerAdapter {
 
+        int[] icons = {R.drawable.ic_police, R.drawable.ic_ambulance, R.drawable.ic_fire};
 
         public PageAdapter(FragmentManager fm) {
             super(fm);
@@ -97,6 +121,10 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         @Override
         public CharSequence getPageTitle(int position) {
             return getResources().getStringArray(R.array.tabs)[position];
+        }
+
+        private Drawable getIcon(int position) {
+            return getResources().getDrawable(icons[position]);
         }
 
         @Override

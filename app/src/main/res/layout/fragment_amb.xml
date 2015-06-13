@@ -1,17 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.teamveryniceah.ping.PoliceFragment"
-    android:orientation="vertical">
-
-
-<!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="70dp" />
+    tools:context="com.teamveryniceah.ping.PoliceFragment">
 
     <at.markushi.ui.CircleButton
         android:layout_width="match_parent"
@@ -19,6 +11,10 @@
         android:src="@drawable/ambulance2"
         app:cb_color="@color/green"
         app:cb_pressedRingWidth="20dip"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="90dp" />
 
-</LinearLayout>
+</RelativeLayout>

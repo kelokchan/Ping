@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--#607D8B  03A9F4-->
     <!--<color name="black">#000000</color>-->
     <!--<color name="primaryColorDark"></color>-->
     <!--<color name="accentColor"></color>-->
-    <color name="primaryColor">#607D8B</color>
-    <color name="primaryColor2">#647382</color>
-    <color name="primaryColorDark">#455A64</color>
+    <color name="primaryColor">#EDEDED</color>
+    <color name="pressedColor">#CFD8DC</color>
+    <color name="primaryColorDark">#607D8B</color>
 
     <color name="blue">#0069A3</color>
     <color name="orange">#F55633</color>
