@@ -119,15 +119,25 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     @Override
     public void onTabSelected(MaterialTab materialTab) {
+////        Window window = this.getWindow();
+////        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+////        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//
 //        switch (materialTab.getPosition()) {
 //            case 0:
-//                materialTab.setAccentColor(getResources().getColor(R.color.blue));
+//                mToolbar.setBackgroundColor(getResources().getColor(R.color.blue));
+//                materialTab.setPrimaryColor(getResources().getColor(R.color.blue));
+////                window.setStatusBarColor(this.getResources().getColor(R.color.blue));
 //                break;
 //            case 1:
-//                materialTab.setAccentColor(getResources().getColor(R.color.green));
+//                mToolbar.setBackgroundColor(getResources().getColor(R.color.green));
+//                materialTab.setPrimaryColor(getResources().getColor(R.color.green));
+////                window.setStatusBarColor(this.getResources().getColor(R.color.green));
 //                break;
 //            case 2:
-//                materialTab.setAccentColor(getResources().getColor(R.color.orange));
+//                mToolbar.setBackgroundColor(getResources().getColor(R.color.orange));
+//                materialTab.setPrimaryColor(getResources().getColor(R.color.orange));
+////                window.setStatusBarColor(this.getResources().getColor(R.color.orange));
 //                break;
 //        }
         mPager.setCurrentItem(materialTab.getPosition());
