@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -129,7 +130,8 @@ public class MainActivity extends ActionBarActivity {
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setVisibility(0)
-                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
+                .setVibrate(new long[]{1000, 1000, 1000})
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setPriority(Notification.PRIORITY_HIGH).build();
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

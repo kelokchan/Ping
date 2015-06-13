@@ -38,7 +38,6 @@ public class FireFragment extends Fragment implements View.OnClickListener, View
     public void onClick(View v) {
         final RippleBackground rippleBackground = (RippleBackground) getActivity().findViewById(R.id.fireContent);
         showRipple(rippleBackground);
-        showRipple(rippleBackground);
         final MainActivity activity = (MainActivity) getActivity();
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
