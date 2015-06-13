@@ -1,5 +1,6 @@
 package com.teamveryniceah.ping;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -109,7 +110,8 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_nearby) {
-            return true;
+            Intent intent = new Intent(this,MapsActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
