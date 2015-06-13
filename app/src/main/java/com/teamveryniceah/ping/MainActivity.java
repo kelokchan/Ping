@@ -1,6 +1,7 @@
 package com.teamveryniceah.ping;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.skyfishjy.library.RippleBackground;
 import com.teamveryniceah.ping.tabs.SlidingTabLayout;
@@ -32,7 +35,6 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
     private CircleButton mFireButton;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +44,15 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         mAmbButton = (CircleButton) findViewById(R.id.ambButton);
         mFireButton = (CircleButton) findViewById(R.id.fireButton);
 
+        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "font/levenim.ttf");
+        TextView myTextView = (TextView) findViewById(R.id.toolbar_title);
+        myTextView.setTypeface(myTypeface);
+
         mToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
@@ -67,14 +74,17 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
             @Override
             public void onPageSelected(int position) {
-                switch(position){
-                    case 0: mToolbar.setBackgroundColor(getResources().getColor(R.color.blue));
+                switch (position) {
+                    case 0:
+                        mToolbar.setBackgroundColor(getResources().getColor(R.color.blue));
                         mTabs.setBackgroundColor(getResources().getColor(R.color.blue));
                         break;
-                    case 1: mToolbar.setBackgroundColor(getResources().getColor(R.color.green));
+                    case 1:
+                        mToolbar.setBackgroundColor(getResources().getColor(R.color.green));
                         mTabs.setBackgroundColor(getResources().getColor(R.color.green));
                         break;
-                    case 2: mToolbar.setBackgroundColor(getResources().getColor(R.color.orange));
+                    case 2:
+                        mToolbar.setBackgroundColor(getResources().getColor(R.color.orange));
                         mTabs.setBackgroundColor(getResources().getColor(R.color.orange));
                         break;
                 }
@@ -90,31 +100,36 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     public void fireButtonClick(View view) {
         final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.fireContent);
-        if (rippleBackground.isRippleAnimationRunning()) {
-            rippleBackground.stopRippleAnimation();
-        } else {
-            rippleBackground.startRippleAnimation();
-        }
+        showRipple(rippleBackground);
+
+
     }
 
     public void policeButtonClick(View view) {
         final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.policeContent);
-        if (rippleBackground.isRippleAnimationRunning()) {
-            rippleBackground.stopRippleAnimation();
-        } else {
-            rippleBackground.startRippleAnimation();
-        }
+        showRipple(rippleBackground);
+
     }
 
     public void ambButtonClick(View view) {
         final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.ambContent);
+        showRipple(rippleBackground);
+
+    }
+
+    public void showRipple(RippleBackground rippleBackground) {
         if (rippleBackground.isRippleAnimationRunning()) {
             rippleBackground.stopRippleAnimation();
         } else {
             rippleBackground.startRippleAnimation();
+            notifyUser();
         }
     }
 
+    public void notifyUser() {
+        Toast.makeText(MainActivity.this, "Notifying nearest department", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Request acknowledged", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,7 +147,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_nearby) {
-            Intent intent = new Intent(this,MapsActivity.class);
+            Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
         }
 
