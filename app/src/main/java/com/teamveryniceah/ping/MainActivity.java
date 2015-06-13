@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dd.processbutton.iml.ActionProcessButton;
 import com.skyfishjy.library.RippleBackground;
 import com.teamveryniceah.ping.tabs.SlidingTabLayout;
 
@@ -33,7 +35,6 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
     private CircleButton mPoliceButton;
     private CircleButton mAmbButton;
     private CircleButton mFireButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,8 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setDistributeEvenly(true);
         mTabs.setViewPager(mPager);
+
+
 
         mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
@@ -101,6 +104,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         });
 
     }
+
 
     public void fireButtonClick(View view) {
         final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.fireContent);

@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/login_blue"
@@ -113,16 +114,25 @@
 
             </LinearLayout>
 
-            <Button
 
-                android:id="@+id/signUpButton"
+
+            <com.dd.processbutton.iml.ActionProcessButton
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#ff3e5ebd"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="Get Started"
-                android:textColor="#ffffff"
-                android:textSize="25dp" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                custom:pb_colorComplete="@color/green_complete"
+                custom:pb_colorNormal="#ff3e5ebd"
+                custom:pb_colorPressed="@color/blue_pressed"
+                custom:pb_colorProgress="@color/purple_progress"
+                custom:pb_textComplete="Success"
+                custom:pb_textProgress="Loading"
+                custom:pb_textError="Error"
+                custom:pb_colorError="@color/red_error"
+                android:onClick="login"/>
 
         </LinearLayout>
     </LinearLayout>

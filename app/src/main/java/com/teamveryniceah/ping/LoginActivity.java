@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,9 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.dd.processbutton.iml.ActionProcessButton;
+
 
 public class LoginActivity extends ActionBarActivity {
-
+    private ActionProcessButton btnLogin;
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +26,33 @@ public class LoginActivity extends ActionBarActivity {
         setContentView(R.layout.activity_login);
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.login_blue));
-        Button button = (Button)findViewById(R.id.signUpButton);
-        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "font/levenim.ttf");
+        btnLogin=(ActionProcessButton)findViewById(R.id.btnLogin);
+        btnLogin.setMode(ActionProcessButton.Mode.ENDLESS);
         TextView myTextView = (TextView) findViewById(R.id.appLabel);
+
+        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "font/levenim.ttf");
+
         myTextView.setTypeface(myTypeface);
-        button.setTypeface(myTypeface);
-        button.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setTypeface(myTypeface);
+
+    }
+    public void login(View view){
+        btnLogin.setProgress(1);
+        new Thread(new Runnable() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
+            public void run() {
+                SystemClock.sleep(2000);
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        btnLogin.setProgress(100);
+                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
-        });
+        }).start();
+
     }
 
     @Override
