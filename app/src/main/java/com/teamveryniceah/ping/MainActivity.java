@@ -1,49 +1,37 @@
 package com.teamveryniceah.ping;
 
 import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.dd.processbutton.iml.ActionProcessButton;
-import com.skyfishjy.library.RippleBackground;
 import com.teamveryniceah.ping.tabs.SlidingTabLayout;
 
-import at.markushi.ui.CircleButton;
-import it.neokree.materialtabs.MaterialTab;
-import it.neokree.materialtabs.MaterialTabListener;
 
-
-public class MainActivity extends ActionBarActivity implements MaterialTabListener, View.OnClickListener {
+public class MainActivity extends ActionBarActivity {
 
     private Toolbar mToolbar;
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
-    private CircleButton mPoliceButton;
-    private CircleButton mAmbButton;
-    private CircleButton mFireButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mPoliceButton = (CircleButton) findViewById(R.id.policeButton);
-        mAmbButton = (CircleButton) findViewById(R.id.ambButton);
-        mFireButton = (CircleButton) findViewById(R.id.fireButton);
 
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "font/levenim.ttf");
         TextView myTextView = (TextView) findViewById(R.id.toolbar_title);
@@ -59,8 +47,6 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setDistributeEvenly(true);
         mTabs.setViewPager(mPager);
-
-
 
         mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
@@ -103,41 +89,9 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
             }
         });
 
-    }
-
-
-    public void fireButtonClick(View view) {
-        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.fireContent);
-        showRipple(rippleBackground);
-
 
     }
 
-    public void policeButtonClick(View view) {
-        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.policeContent);
-        showRipple(rippleBackground);
-
-    }
-
-    public void ambButtonClick(View view) {
-        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.ambContent);
-        showRipple(rippleBackground);
-
-    }
-
-    public void showRipple(RippleBackground rippleBackground) {
-        if (rippleBackground.isRippleAnimationRunning()) {
-            rippleBackground.stopRippleAnimation();
-        } else {
-            rippleBackground.startRippleAnimation();
-            notifyUser();
-        }
-    }
-
-    public void notifyUser() {
-        Toast.makeText(MainActivity.this, "Notifying nearest department", Toast.LENGTH_LONG).show();
-        Toast.makeText(MainActivity.this, "Request acknowledged", Toast.LENGTH_LONG).show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,24 +116,24 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onTabSelected(MaterialTab materialTab) {
+    public void showNotification() {
 
-        mPager.setCurrentItem(materialTab.getPosition());
-    }
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
-    @Override
-    public void onTabReselected(MaterialTab materialTab) {
-
-    }
-
-    @Override
-    public void onTabUnselected(MaterialTab materialTab) {
-
-    }
-
-    @Override
-    public void onClick(View v) {
+        Notification notification = new NotificationCompat.Builder(this)
+                .setCategory(Notification.CATEGORY_MESSAGE)
+                .setContentTitle("Help incoming")
+                .setContentText("Keep calm. Rescue is coming in 3 minutes.")
+                .setSmallIcon(R.drawable.marker)
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true)
+                .setVisibility(0)
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
+                .setPriority(Notification.PRIORITY_HIGH).build();
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notification);
 
     }
 
@@ -212,6 +166,8 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         public int getCount() {
             return 3;
         }
+
+
     }
 }
 

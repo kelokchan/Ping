@@ -2,16 +2,14 @@ package com.teamveryniceah.ping;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.dd.processbutton.iml.ActionProcessButton;
@@ -25,7 +23,7 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.login_blue));
+        //getWindow().setStatusBarColor(getResources().getColor(R.color.login_blue));
         btnLogin=(ActionProcessButton)findViewById(R.id.btnLogin);
         btnLogin.setMode(ActionProcessButton.Mode.ENDLESS);
         TextView myTextView = (TextView) findViewById(R.id.appLabel);

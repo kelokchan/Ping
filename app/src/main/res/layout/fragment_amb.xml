@@ -30,7 +30,6 @@
         app:cb_color="@color/green"
         app:cb_pressedRingWidth="20dip"
         android:layout_gravity="center"
-        android:onClick="ambButtonClick"
         android:longClickable="true" />
 
 </FrameLayout>
