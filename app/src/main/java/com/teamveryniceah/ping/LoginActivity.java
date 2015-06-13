@@ -22,7 +22,7 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.black));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.login_blue));
         Button button = (Button)findViewById(R.id.signUpButton);
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "font/levenim.ttf");
         TextView myTextView = (TextView) findViewById(R.id.appLabel);
