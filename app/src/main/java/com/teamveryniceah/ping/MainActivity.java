@@ -10,11 +10,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabHost;
+import it.neokree.materialtabs.MaterialTabListener;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends ActionBarActivity implements MaterialTabListener{
 
     private Toolbar mToolbar;
     private ViewPager mPager;
+    private MaterialTabHost mTabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +28,26 @@ public class MainActivity extends ActionBarActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mPager = (ViewPager) findViewById(R.id.pager);
+        mTabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
         mPager.setAdapter(pageAdapter);
+        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                mTabHost.setSelectedNavigationItem(position);
+            }
+        });
+
+        for (int i =0; i < pageAdapter.getCount(); i++) {
+            mTabHost.addTab(
+                    mTabHost.newTab()
+                            .setText(pageAdapter.getPageTitle(i))
+                            .setTabListener(this)
+            );
+        }
     }
 
     @Override
@@ -49,6 +70,21 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(MaterialTab materialTab) {
+        mPager.setCurrentItem(materialTab.getPosition());
+    }
+
+    @Override
+    public void onTabReselected(MaterialTab materialTab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(MaterialTab materialTab) {
+
     }
 
     private class PageAdapter extends FragmentPagerAdapter {
