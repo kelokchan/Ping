@@ -2,7 +2,7 @@
 <resources>
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="android:colorPrimary">#647382</item>
-        <item name="android:colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="android:colorPrimaryDark">@color/blue_dark</item>
     </style>
 
 </resources>

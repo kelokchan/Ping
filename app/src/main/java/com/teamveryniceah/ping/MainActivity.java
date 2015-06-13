@@ -1,7 +1,9 @@
 package com.teamveryniceah.ping;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -52,7 +54,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
@@ -72,20 +74,24 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
             }
 
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
                         mToolbar.setBackgroundColor(getResources().getColor(R.color.blue));
                         mTabs.setBackgroundColor(getResources().getColor(R.color.blue));
+                        getWindow().setStatusBarColor(getResources().getColor(R.color.blue_dark));
                         break;
                     case 1:
                         mToolbar.setBackgroundColor(getResources().getColor(R.color.green));
                         mTabs.setBackgroundColor(getResources().getColor(R.color.green));
+                        getWindow().setStatusBarColor(getResources().getColor(R.color.green_dark));
                         break;
                     case 2:
                         mToolbar.setBackgroundColor(getResources().getColor(R.color.orange));
                         mTabs.setBackgroundColor(getResources().getColor(R.color.orange));
+                        getWindow().setStatusBarColor(getResources().getColor(R.color.orange_dark));
                         break;
                 }
             }

@@ -4,20 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
-    tools:context="com.teamveryniceah.ping.PoliceFragment"
-    >
+    tools:context="com.teamveryniceah.ping.PoliceFragment">
 
-    <com.skyfishjy.library.RippleBackground
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/policeContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/policeContent"
         android:layout_gravity="center"
         app:rb_color="@color/indicatorColor"
+        app:rb_duration="2700"
         app:rb_radius="32dp"
         app:rb_rippleAmount="4"
-        app:rb_duration="2700"
         app:rb_scale="10">
 
     </com.skyfishjy.library.RippleBackground>
@@ -26,11 +24,11 @@
         android:id="@+id/policeButton"
         android:layout_width="match_parent"
         android:layout_height="250dip"
+        android:layout_gravity="center"
+        android:onClick="policeButtonClick"
         android:src="@drawable/police2"
         app:cb_color="@color/blue"
-        app:cb_pressedRingWidth="20dip"
-        android:layout_gravity="center"
-        android:onClick="policeButtonClick"/>
+        app:cb_pressedRingWidth="20dip" />
 
 
 </FrameLayout>
