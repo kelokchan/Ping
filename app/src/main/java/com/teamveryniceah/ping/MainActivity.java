@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
                             .setTabListener(this)
             );
         }
+        mTabHost.setSelectedNavigationItem(1);
     }
 
     @Override
@@ -65,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_nearby) {
             return true;
         }
 

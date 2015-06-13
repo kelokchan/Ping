@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:accentColor="@android:color/darker_gray"
-            app:textColor="#000000"
+            app:textColor="#FFFFFF"
             app:primaryColor="@color/primaryColor" />
             <!--app:hasIcons="true"-->
             <!--app:iconColor="@android:color/black"-->

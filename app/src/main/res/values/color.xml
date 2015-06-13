@@ -3,5 +3,11 @@
     <!--<color name="black">#000000</color>-->
     <!--<color name="primaryColorDark"></color>-->
     <!--<color name="accentColor"></color>-->
-    <color name="primaryColor">#EEEEEE</color>
+    <color name="primaryColor">#607D8B</color>
+    <color name="primaryColor2">#647382</color>
+    <color name="primaryColorDark">#455A64</color>
+
+    <color name="blue">#0069A3</color>
+    <color name="green">#F55633</color>
+    <color name="orange">#008973</color>
 </resources>
