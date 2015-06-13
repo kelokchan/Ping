@@ -22,7 +22,6 @@ import com.teamveryniceah.ping.tabs.SlidingTabLayout;
 
 import at.markushi.ui.CircleButton;
 import it.neokree.materialtabs.MaterialTab;
-import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
 
@@ -31,7 +30,6 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
     private Toolbar mToolbar;
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
-    private MaterialTabHost mTabHost;
     private CircleButton mPoliceButton;
     private CircleButton mAmbButton;
     private CircleButton mFireButton;
@@ -54,7 +52,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
@@ -162,27 +160,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     @Override
     public void onTabSelected(MaterialTab materialTab) {
-////        Window window = this.getWindow();
-////        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-////        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//
-//        switch (materialTab.getPosition()) {
-//            case 0:
-//                mToolbar.setBackgroundColor(getResources().getColor(R.color.blue));
-//                materialTab.setPrimaryColor(getResources().getColor(R.color.blue));
-////                window.setStatusBarColor(this.getResources().getColor(R.color.blue));
-//                break;
-//            case 1:
-//                mToolbar.setBackgroundColor(getResources().getColor(R.color.green));
-//                materialTab.setPrimaryColor(getResources().getColor(R.color.green));
-////                window.setStatusBarColor(this.getResources().getColor(R.color.green));
-//                break;
-//            case 2:
-//                mToolbar.setBackgroundColor(getResources().getColor(R.color.orange));
-//                materialTab.setPrimaryColor(getResources().getColor(R.color.orange));
-////                window.setStatusBarColor(this.getResources().getColor(R.color.orange));
-//                break;
-//        }
+
         mPager.setCurrentItem(materialTab.getPosition());
     }
 
@@ -193,17 +171,7 @@ public class MainActivity extends ActionBarActivity implements MaterialTabListen
 
     @Override
     public void onTabUnselected(MaterialTab materialTab) {
-//        switch (materialTab.getPosition()) {
-//            case 0:
-//                materialTab.setAccentColor(getResources().getColor(R.color.blue));
-//                break;
-//            case 1:
-//                materialTab.setAccentColor(getResources().getColor(R.color.green));
-//                break;
-//            case 2:
-//                materialTab.setAccentColor(getResources().getColor(R.color.orange));
-//                break;
-//        }
+
     }
 
     @Override
