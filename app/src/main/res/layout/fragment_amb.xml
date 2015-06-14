@@ -25,7 +25,7 @@
     <at.markushi.ui.CircleButton
         android:id="@+id/ambButton"
         android:layout_width="match_parent"
-        android:layout_height="250dip"
+        android:layout_height="200dip"
         android:src="@drawable/ambulance2"
         app:cb_color="@color/green"
         app:cb_pressedRingWidth="20dip"

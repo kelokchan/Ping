@@ -23,7 +23,7 @@
     <at.markushi.ui.CircleButton
         android:id="@+id/policeButton"
         android:layout_width="match_parent"
-        android:layout_height="250dip"
+        android:layout_height="200dip"
         android:layout_gravity="center"
         android:src="@drawable/police2"
         app:cb_color="@color/blue"
