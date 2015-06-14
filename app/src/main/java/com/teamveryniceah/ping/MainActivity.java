@@ -29,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
