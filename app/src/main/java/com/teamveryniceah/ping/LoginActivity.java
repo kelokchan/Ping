@@ -39,7 +39,7 @@ public class LoginActivity extends ActionBarActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SystemClock.sleep(2000);
+                SystemClock.sleep(1000);
                 LoginActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
