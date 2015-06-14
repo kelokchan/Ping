@@ -4,20 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    tools:context="com.teamveryniceah.ping.PoliceFragment"
-    android:longClickable="true">
+    android:longClickable="true"
+    tools:context="com.teamveryniceah.ping.PoliceFragment">
 
-    <com.skyfishjy.library.RippleBackground
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ambContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ambContent"
         android:layout_gravity="center"
         app:rb_color="@color/indicatorColor"
+        app:rb_duration="2200"
         app:rb_radius="32dp"
         app:rb_rippleAmount="4"
-        app:rb_duration="2200"
         app:rb_scale="10">
 
     </com.skyfishjy.library.RippleBackground>
@@ -26,10 +25,9 @@
         android:id="@+id/ambButton"
         android:layout_width="match_parent"
         android:layout_height="200dip"
+        android:layout_gravity="center"
         android:src="@drawable/ambulance2"
         app:cb_color="@color/green"
-        app:cb_pressedRingWidth="20dip"
-        android:layout_gravity="center"
-        android:longClickable="true" />
+        app:cb_pressedRingWidth="20dip" />
 
 </FrameLayout>
