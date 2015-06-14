@@ -47,7 +47,7 @@ public class FireFragment extends Fragment implements View.OnClickListener, View
                 activity.showNotification();
             }
 
-        }, 10000L);
+        }, 8000L);
     }
 
     public void showRipple(RippleBackground rippleBackground) {

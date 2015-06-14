@@ -124,9 +124,10 @@ public class MainActivity extends ActionBarActivity {
 
         Notification notification = new NotificationCompat.Builder(this)
                 .setCategory(Notification.CATEGORY_MESSAGE)
+                .setTicker("Keep calm. Rescue is coming in 3 minutes.")
                 .setContentTitle("Help incoming")
                 .setContentText("Keep calm. Rescue is coming in 3 minutes.")
-                .setSmallIcon(R.drawable.marker)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setVisibility(0)
