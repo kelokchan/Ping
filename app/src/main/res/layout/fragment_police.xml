@@ -28,7 +28,5 @@
         android:src="@drawable/police2"
         app:cb_color="@color/blue"
         app:cb_pressedRingWidth="20dip"/>
-        <!--android:onClick="policeButtonClick"/>-->
-
 
 </FrameLayout>

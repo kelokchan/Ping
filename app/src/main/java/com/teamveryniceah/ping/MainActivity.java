@@ -14,10 +14,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.teamveryniceah.ping.tabs.SlidingTabLayout;
@@ -28,12 +31,21 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar mToolbar;
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private String[] options;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        options = getResources().getStringArray(R.array.options);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.option_list,R.id.option_list_textview, options));
 
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "font/levenim.ttf");
         TextView myTextView = (TextView) findViewById(R.id.toolbar_title);
@@ -43,6 +55,10 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
